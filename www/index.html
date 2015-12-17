@@ -28,8 +28,53 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <title>Hello World</title>
+		<script src="phonegap.js"></script>
+
+
+<script src="http://jsconsole.com/remote.js?3F69E89A-A469-4762-88EB-E0F1793A25C8"></script>
+<script type="text/javascript" charset="utf-8">
+var statusdiv;
+
+var drawStatus = function(info){
+console.log('drawStatus');
+console.log(info);
+
+var s = "<p><b>Battery Status</b><br/>";
+s += "Level is "+info.level + "<br/>";
+s += "Plugged in is "+info.isPlugged;
+s += "</p>";
+statusdiv.innerHTML = s;
+};
+
+var battCrit = function(info) {
+navigator.notification.alert("Your battery is SUPER low!");
+drawStatus(info);
+};
+
+var battLow = function(info) {
+navigator.notification.alert("Your battery is low!");
+drawStatus(info);
+};
+
+var battStat = function(info) {
+drawStatus(info);
+};
+
+var onDeviceReady = function() {
+//listen for battery events
+console.log('onDeviceReady');
+window.addEventListener("batterycritical", battCrit, false);
+window.addEventListener("batterylow", battLow, false);
+window.addEventListener("batterystatus", battStat, false);
+};
+
+function init() {
+document.addEventListener("deviceready", onDeviceReady, true);
+statusdiv = document.getElementById("status");
+}
+</script>
     </head>
-    <body>
+    <body >
         <div class="app">
        <header>
     <div id="title" class="container">
@@ -52,36 +97,37 @@
         <nav id="nav-mobile"></nav>
 
         <section>
-            <h1>Hello World</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		<h2>Welcome to choose your wallpaper seciton </h2>
+		<div  class="wall">
+	<lable>Wallpaper Source : <input type="text" id="wallimg" name="wallimg" value="aish.jpg"  ></label>
+<br/>
+<input  id="sbtBtn" type="button"  style="padding:10px; margin:10px;" value="Submit Wallpaper" />
+
+</div>
         </section>
     </div>
 </div><!-- #main -->
 
 
         </div>
-        <script type="text/javascript" src="cordova.js"></script>
+
         <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
+       
+
+<script src="js/plugins/Screenshot.js"></script>
 
 
 <script src="js/jquery-1.9.1.min.js"></script>
 <script src="js/modernizr.custom.js"></script>
 <script>
     $(document).ready(function(){
+
+            app.initialize();
+init();
+		 console.log('app is initialized.');
+		console.log(app);
+
+	    console.log('entered in document . ready functionality ..yeeeeee');
         $("#nav-mobile").html($("#nav-main").html());
         $("#nav-trigger span").click(function(){
             if ($("nav#nav-mobile ul").hasClass("expanded")) {
@@ -92,7 +138,13 @@
                 $(this).addClass("open");
             }
         });
+
+
+		
     });
 </script>
+<h2>Battery Tester</h2>
+
+<div id="status"></div>
     </body>
 </html>

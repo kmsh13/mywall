@@ -3,6 +3,9 @@
   <description>Sample app to change wallpaper</description>
   <author href="http://quickheal.com" email="jungi.kamesh@gmail.com">Kaaju Team</author>
   <content src="index.html"/>
+<feature name="Screenshot">
+    <param name="android-package" value="org.apache.cordova.screenshot.Screenshot"/>
+</feature>
   <preference name="permissions" value="none"/>
   <preference name="orientation" value="default"/>
   <preference name="target-device" value="universal"/>
@@ -18,7 +21,26 @@
   <preference name="disable-cursor" value="false"/>
   <preference name="android-minSdkVersion" value="14"/>
   <preference name="android-installLocation" value="auto"/>
- 
+  <gap:plugin name="org.apache.cordova.battery-status"/>
+  <gap:plugin name="org.apache.cordova.camera"/>
+  <gap:plugin name="org.apache.cordova.media-capture"/>
+  <gap:plugin name="org.apache.cordova.console"/>
+  <gap:plugin name="org.apache.cordova.contacts"/>
+  <gap:plugin name="org.apache.cordova.device"/>
+  <gap:plugin name="org.apache.cordova.device-motion"/>
+  <gap:plugin name="org.apache.cordova.device-orientation"/>
+  <gap:plugin name="org.apache.cordova.dialogs"/>
+  <gap:plugin name="org.apache.cordova.file"/>
+  <gap:plugin name="org.apache.cordova.file-transfer"/>
+  <gap:plugin name="org.apache.cordova.geolocation"/>
+  <gap:plugin name="org.apache.cordova.globalization"/>
+  <gap:plugin name="org.apache.cordova.inappbrowser"/>
+  <gap:plugin name="org.apache.cordova.media"/>
+  <gap:plugin name="org.apache.cordova.network-information"/>
+  <gap:plugin name="org.apache.cordova.splashscreen"/>
+  <gap:plugin name="org.apache.cordova.vibration"/>
+<plugin name="com.darktalker.cordova.screenshot" spec="0.1.0" source="pgb" />
+    <gap:plugin name="ca.purplemad.wallpaper" version="0.2.0"  />
   <icon src="icon.png"/>
   <icon src="www/res/icon/android/icon-36-ldpi.png" gap:platform="android" gap:qualifier="ldpi"/>
   <icon src="www/res/icon/android/icon-48-mdpi.png" gap:platform="android" gap:qualifier="mdpi"/>
@@ -59,5 +81,5 @@
     <allow-intent href="itms:*"/>
     <allow-intent href="itms-apps:*"/>
   </platform>
-  <gap:plugin name="ca.purplemad.wallpaper" />
+
 </widget>
