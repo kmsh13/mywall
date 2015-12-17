@@ -1,4 +1,4 @@
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.xtd.mywall" version="1.0.4">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.xtd.mywall" version="1.0.5">
   <name>MyWallpaperApp</name>
   <description>Sample app to change wallpaper</description>
   <author href="http://quickheal.com" email="jungi.kamesh@gmail.com">Kaaju Team</author>
